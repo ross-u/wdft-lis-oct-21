@@ -1,0 +1,73 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img src={{image}} width="200" />
+    <h1>Name: {{name}}</h1>
+    <p>Bootcamp:{{bootcamp}} </p>
+    <p>Year graduated: {{year}}</p>
+    <p>Phone: {{phone}}</p>
+
+    {{#if description}}
+      {{description}}
+    {{/if}}
+
+    {{#if m1}}
+      <p>Finished M1 successfully</p>
+    {{/if}}
+
+    <br />
+    {{#if phone}}
+      Phone number:
+      {{phone}}
+    {{else}}
+      Phone number not available!
+    {{/if}}
+
+    <br />
+
+    <!-- false, undefined, null, 0, "", []  -->
+    {{#unless address}}
+      <p>Address is not available!</p>
+    {{/unless}}
+
+    <br />
+
+    <ul>
+      {{#each techStack}}
+        <li>{{this}} </li>
+
+      {{else}}
+        Data not available
+      {{/each}}
+    </ul>
+
+    <br />
+
+    {{#each project}}
+      <p> {{@key}} {{this}}<p>
+    {{/each}}
+
+
+    <br />
+
+    {{project.URL}}
+
+    <br />
+
+    {{#each completedAssessments}}
+
+       {{#if this}}
+        <p>Assessment {{@key}} completed</p>
+       {{/if}}
+    {{/each}}
+
+    <br />
+    <br />
+    <br />
+  </body>
+</html>
