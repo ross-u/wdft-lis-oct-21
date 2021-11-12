@@ -28,7 +28,7 @@ console.log(`teacher`, teacher);
 console.log(`student`, student);
 console.log(`ta`, ta);
 
-const campuses = ["madrid", "barcelona", "lisbon", "miami"];
+const campuses = ["madrid", "barcelona", "lisbon"];
 
 // Default value - fallback when value is undefined
 const [campus1, campus2, campus3, campus4 = "paris"] = campuses;
