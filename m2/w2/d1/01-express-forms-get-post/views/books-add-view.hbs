@@ -1,0 +1,16 @@
+{{! This form sends a POST request }}
+{{! 
+  req.body  ->  { title: '', author: '', rating: '' }
+ }}
+<form action="/books/add" method="POST">
+  <label>Title:</label>
+  <input type="text" name="title" />
+
+  <label>Author:</label>
+  <input type="text" name="author" />
+
+  <label>Rating:</label>
+  <input type="number" name="rating" />
+
+  <button type="submit">Create a book</button>
+</form>
