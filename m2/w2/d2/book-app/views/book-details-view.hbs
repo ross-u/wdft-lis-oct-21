@@ -1,0 +1,32 @@
+<div style="border: 1px solid black; padding: 20px 50px; margin: 20px">
+  <p><b>Title: {{book.title}}</b> </p>
+  <p>Author:{{book.author}}</b> </p>
+  <p><b>Rating: {{book.rating}}</b> </p>
+
+
+  <a href="javascript:history.back()"> Back </a>
+</div>
+
+<hr />
+
+<p> <b>Post a Review</b></p>
+<form action="/reviews/{{book._id}}/create" method="POST">
+  <label>Comment:</label>
+  <input type="text" name="comment">
+
+  <br>
+  <label>Score:</label>
+  <input type="number" name="score">
+  <button type="submit">Post</button>
+</form>
+
+<hr>
+
+{{!-- {{#each book.reviews}} --}}
+{{#each book.updatedReviews}}
+  <p>Comment: {{this.comment}}</p>
+  <p>Score: {{this.score}}</p>
+  <hr>
+{{/each}}
+
+<small>{{copyrightsText}}</small>

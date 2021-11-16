@@ -1,0 +1,13 @@
+<h2>Search results</h2>
+
+{{#each booksList}}
+  <div style="border: 1px solid black; padding: 20px">
+
+    <p>{{this.title}}</p>
+    <a href="/books/details/{{this._id}}">See more</a>
+
+    <br />
+
+    <a href="/books/{{this._id}}/edit">Edit</a>
+  </div>
+{{/each}}

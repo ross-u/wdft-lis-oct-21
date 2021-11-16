@@ -100,6 +100,9 @@ app.get("/books/details/:bookId", (req, res) => {
 });
 
 // 404 page fallback route
+app.use((req, res) => {
+  res.render("404-view");
+});
 
 // START THE SERVER
 app.listen(PORT, () => console.log(`Server listening on port ${PORT} !`));

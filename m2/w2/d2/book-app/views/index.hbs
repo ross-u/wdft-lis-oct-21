@@ -1,0 +1,14 @@
+<h2>Welcome to the {{title}}</h2>
+
+<form action="/search" method="GET">
+
+  <label>Search by Title:</label>
+  <input type="text" name="bookTitle" />
+
+  <button type="submit">Search</button>
+</form>
+
+{{! 
+
+  GET   /search?bookTitle=mangotango
+ }}
