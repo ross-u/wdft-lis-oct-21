@@ -4,6 +4,8 @@
   <div style="border: 1px solid black; padding: 20px">
 
     <p>{{this.title}}</p>
+    <p>Date: {{this.dateUSLocale}}</p>
+    <p>THis is with the helper: {{dateFormat this.created_at}}</p>
     <a href="/books/details/{{this._id}}">See more</a>
   </div>
 {{/each}}

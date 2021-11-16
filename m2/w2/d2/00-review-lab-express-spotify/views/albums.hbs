@@ -1,0 +1,9 @@
+{{#each albumsArray}}
+  <img src="{{this.images.2.url}}" alt="" />
+  <p>{{this.name}}</p>
+
+  <a href="/tracks/{{this.id}}">View Tracks</a>
+
+  {{! /tracks/123abc }}
+  {{! /tracks/234tyu }}
+{{/each}}

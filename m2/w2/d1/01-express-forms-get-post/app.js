@@ -21,6 +21,11 @@ app.set("views", __dirname + "/views");
 // REGISTER THE PARTIAL
 hbs.registerPartials(__dirname + "/views/partials");
 
+//  usage: {{dateFormat creation_date}}
+hbs.registerHelper("dateFormat", function (options) {
+  return new Date(options.fn(this)).toLocaleDateString("en-US");
+});
+
 // SET THE STATIC FOLDER FOR PUBLIC FILES
 app.use(express.static("public"));
 
@@ -65,8 +70,20 @@ app.get("/search", (req, res) => {
   Book.find({ title: { $regex: bookTitle, $options: "i" } }).then(
     (foundBooks) => {
       console.log(`foundBooks`, foundBooks);
+
+      const updatedBooks = foundBooks.map((book) => {
+        const bookCopy = {
+          ...book,
+          dateUSLocale: book.created_at.toLocaleDateString("en-US"),
+        };
+
+        return bookCopy;
+      });
+
+      console.log(`updatedBooks`, updatedBooks);
+
       // Render the page and display the found books list
-      res.render("books-list-view", { booksList: foundBooks });
+      res.render("books-list-view", { booksList: updatedBooks });
     }
   );
 });
