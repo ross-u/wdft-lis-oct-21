@@ -7,66 +7,77 @@ const books = [
     title: "The Hunger Games",
     author: "Suzanne Collins",
     rating: 10,
+    category: ["fiction", "novel"],
     reviews: []
   },
   {
     title: "Harry Potter",
     author: "J.K. Rowling ",
     rating: 9,
+    category: ["fantasy", "novel"],
     reviews: []
   },
   {
     title: "To Kill a Mockingbird",
     author: "Harper Lee",
     rating: 8,
+    category: ["fiction", "novel"],
     reviews: []
   },
   {
     title: "Pride and Prejudice",
     author: "Jane Austen",
     rating: 9,
+    category: ["fiction", "novel"],
     reviews: []    
   },
   {
     title: "Twilight",
     author: "Stephenie Meyer ",
     rating: 10,
+    category: ["romance"],
     reviews: []    
   },
   {
     title: "The Book Thief",
     author: "Markus Zusak",
     rating: 7,
+    category: ["fiction", "novel"],
     reviews: []    
   },
   {
     title: "The Chronicles of Narnia",
     author: "C.S. Lewis",
     rating: 8,
+    category: ["fantasy"],
     reviews: []    
   },
   {
     title: "Animal Farm",
     author: "George Orwell",
     rating: 9,
+    category: ["fiction", "novel"],
     reviews: []    
   },
   {
     title: "Gone with the Wind",
     author: "Margaret Mitchell",
     rating: 10,
+    category: ["novel"],
     reviews: []    
   },
   {
     title: "The Fault in Our Stars",
     author: "John Green",
     rating: 8,
+    category: ["novel"],
     reviews: []  
   },
   {
     title: "Don Quixote",
     author: "Miguel de Cervantes",
     rating: 9,
+    category: ["fiction", "novel"],
     reviews: [] 
   },
 ];
