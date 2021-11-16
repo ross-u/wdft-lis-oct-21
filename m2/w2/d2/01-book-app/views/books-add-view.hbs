@@ -3,14 +3,27 @@
   req.body  ->  { title: '', author: '', rating: '' }
  }}
 <form action="/books/add" method="POST">
+  <br />
   <label>Title:</label>
   <input type="text" name="title" />
 
+  <br />
   <label>Author:</label>
   <input type="text" name="author" />
 
+  <br />
   <label>Rating:</label>
   <input type="number" name="rating" />
 
+  <br />
+  <select name="category" multiple>
+    <option value="novel">Novel</option>
+    <option value="fiction">Fiction</option>
+    <option value="fantasy">Fantasy</option>
+    <option value="romance">Romance</option>
+    <option value="satire">Satire</option>
+  </select>
+
+  <br />
   <button type="submit">Create a book</button>
 </form>

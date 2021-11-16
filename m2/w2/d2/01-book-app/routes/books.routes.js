@@ -21,15 +21,21 @@ router.get("/books/add", (req, res) => {
 
 // POST      /books/add  - Receives the data from the POST form
 router.post("/books/add", (req, res) => {
-  // req.body; --> Body of the POST HTTP request with the data from the form fields
-  // const title = req.body.title;
-  // const author = req.body.author;
-  // const rating = req.body.rating;
-  // OR
-  const { rating, author, title } = req.body;
+  const { rating, author, title, category } = req.body;
+
+  // Check if user selected one value or multiple and normalize it
+  let categoryArray;
+  if (category && !Array.isArray(category)) {
+    // if it is not an array, make it an array 
+    categoryArray = [category];
+  }
+  else if (Array.isArray(category)) {
+    // if it is an array, leave it as it is
+    categoryArray = category;
+  }
 
   // Book.create( { rating: rating, author: author, title: title } )
-  Book.create({ author, title })
+  Book.create({ title, author, rating, category })
     .then((createdBook) => {
       // Redirect to the page with the book details
       res.redirect(`/books/details/${createdBook._id}`);

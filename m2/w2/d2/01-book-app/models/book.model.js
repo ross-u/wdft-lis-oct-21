@@ -8,6 +8,7 @@ const bookSchema = new Schema(
     title: { type: String, required: true },
     author: { type: String, required: true },
     rating: { type: Number, default: 1 },
+    category: [String],
     reviews: [
       { type: Schema.Types.ObjectId, ref: "Review" }
     ]
