@@ -5,6 +5,8 @@ const User = require("./../models/User.model");
 const bcrypt = require("bcryptjs");
 const zxcvbn = require("zxcvbn");
 
+const isLoggedIn = require("./../middleware/isLoggedIn");
+
 const saltRounds = 10;
 
 // ROUTES:
@@ -138,7 +140,7 @@ router.post("/login", (req, res) => {
 });
 
 // GET /logout
-router.get("/logout", (req, res) => {
+router.get("/logout", isLoggedIn, (req, res) => {
   // Delete the session from the sessions collection
   // This automatically invalidates the future request with the same cookie
   req.session.destroy((err) => {
@@ -146,6 +148,7 @@ router.get("/logout", (req, res) => {
       return res.render("error");
     }
 
+    // If session was deleted successfully redirect to the home page.
     res.redirect("/");
   });
 });
