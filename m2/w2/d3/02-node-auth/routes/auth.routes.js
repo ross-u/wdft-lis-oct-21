@@ -139,7 +139,7 @@ router.post("/login", (req, res) => {
 
 // GET /logout
 router.get("/logout", (req, res) => {
-  // Destroy the session in the session storage
+  // Delete the session from the sessions collection
   // This automatically invalidates the future request with the same cookie
   req.session.destroy((err) => {
     if (err) {
