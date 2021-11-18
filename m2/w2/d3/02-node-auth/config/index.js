@@ -48,6 +48,7 @@ module.exports = (app) => {
   const MONGO_URI =
     process.env.MONGODB_URI || "mongodb://localhost/02-node-auth";
 
+  // Sesssion / cookie middleware  --> req.session
   app.use(
     session({
       secret: process.env.SESSION_SECRET || "ironhack123",

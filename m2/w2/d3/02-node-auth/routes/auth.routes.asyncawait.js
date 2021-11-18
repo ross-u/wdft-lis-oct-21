@@ -108,6 +108,7 @@ router.post("/login", async (req, res) => {
 
     // Check if the user exists
     const foundUser = User.findOne({ username: username });
+
     if (!foundUser) {
       throw new Error("Wrong credentials");
     }
