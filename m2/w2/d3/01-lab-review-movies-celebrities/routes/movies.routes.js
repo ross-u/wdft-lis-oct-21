@@ -34,18 +34,30 @@ router.post("/movies/create", async (req, res) => {
   }
 });
 
+// router.get("/movies/:movieId", async (req, res, next) => {
+//   try {
+//     const movieId = req.params.movieId;
+//     //
+//     const foundMovie = await Movie.findById(movieId).populate("cast");
+//     //
+//     res.render("movies/movie-details", { foundMovie });
+//     //
+//   } catch (error) {
+//     //
+//     console.log(error);
+//   }
+// });
+
 router.get("/movies/:movieId", async (req, res, next) => {
-  try {
-    const movieId = req.params.movieId;
-    //
-    const foundMovie = await Movie.findById(movieId).populate("cast");
-    //
-    res.render("movies/movie-details", { foundMovie });
-    //
-  } catch (error) {
-    //
-    console.log(error);
-  }
+  const movieId = req.params.movieId;
+
+  Movie.findById(movieId)
+    .populate("cast")
+    .then((foundMovie) => {
+      console.log(`foundMovie`, foundMovie);
+
+      res.render("movies/movie-details", { foundMovie });
+    });
 });
 
 module.exports = router;
