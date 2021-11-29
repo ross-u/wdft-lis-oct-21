@@ -91,5 +91,26 @@ app.get("/search", (req, res) => {
     });
 });
 
+
+
+
+
+
+
+app.get('/profile', isLoggedIn, (req, res) => {
+  // req.session.user
+  // Get user's id
+  const userId = req.session.user._id;
+
+  User.findById(userId)
+    .then((foundUser) => {
+      res.render('pages/profile')
+    })
+})
+
+
+
+
+
 // START THE SERVER
 app.listen(PORT, () => console.log(`Server listening on port ${PORT} !`));
