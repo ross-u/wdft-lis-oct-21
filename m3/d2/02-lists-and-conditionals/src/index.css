@@ -69,3 +69,26 @@ select {
   margin: 5px;
   font-size: 1rem;
 }
+
+span.green,
+span.red,
+span.black {
+  display: inline-block;
+  padding: 3px 10px;
+  width: 25px;
+  border-radius: 3px;
+  color: white;
+  font-weight: 600;
+}
+
+.green {
+  background: green;
+}
+
+.red {
+  background: red;
+}
+
+.black {
+  background: black;
+}
