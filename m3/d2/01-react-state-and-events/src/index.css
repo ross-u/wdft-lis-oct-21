@@ -1,0 +1,61 @@
+/* index.css */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  margin: 0;
+  padding: 20px;
+  font-family: sans-serif;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.dark {
+  background: #282c34;
+  color: white;
+}
+
+.Counter {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid black;
+  background: cornflowerblue;
+  border-radius: 5px;
+}
+
+button,
+select {
+  padding: 3px 10px;
+  min-width: 50px;
+  margin: 5px;
+}
+
+.WeatherWidget {
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+  margin: 10px;
+  border: 2px solid grey;
+  border-radius: 120px;
+  background: lightgoldenrodyellow;
+  color: black;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.WeatherWidget span {
+  font-size: 36px;
+}
+
+.WeatherWidget.dark {
+  background: #2a3c60;
+  color: white;
+}
