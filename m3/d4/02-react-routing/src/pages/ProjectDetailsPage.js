@@ -24,6 +24,7 @@ function ProjectDetailsPage() {
 
 
   if (!foundProject && !isLoading) {
+    // We can navigate to another page (similar to redirect)
     return <Navigate to="/error" />
   }
 
@@ -38,8 +39,11 @@ function ProjectDetailsPage() {
           <p>Description: { foundProject.description}</p>
         </>
       )}
-      
+
+      {/* Button to navigate to another page  */}
       <button onClick={ () => navigate("/")}> Home </button>
+      
+      {/* Back button */}
       <button onClick={ () => navigate(-1) }> Back </button>
 
     </div>
