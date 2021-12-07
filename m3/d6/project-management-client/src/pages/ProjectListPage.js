@@ -20,6 +20,7 @@ function ProjectListPage() {
     getAllProjects();
   }, []);
 
+
   return (
     <div className="ProjectListPage">
       <h3>Projects</h3>
@@ -29,7 +30,7 @@ function ProjectListPage() {
       {projects.map((oneProject) => {
         return (
           <div className="ProjectCard card" key={oneProject._id}>
-            <Link to="/projects/PROJECT_ID_GOES_HERE">
+            <Link to={"/projects/" + oneProject._id}>
               <h3>{oneProject.title}</h3>
             </Link>
           </div>

@@ -23,7 +23,7 @@ router.post('/api/projects', async (req, res, next) => {
 // GET /api/projects - Get all existing projects
 router.get('/api/projects', async (req, res, next) => {
   try {
-    const allProjects = await Project.find();
+    const allProjects = await Project.find().populate('tasks');
 
     res.status(200).json(allProjects);
   } catch (error) {
@@ -44,7 +44,7 @@ router.get('/api/projects/:projectId', async (req, res, next) => {
 
 
     // Make a DB query
-    const oneProject = await Project.findById(projectId);
+    const oneProject = await Project.findById(projectId).populate('tasks');
 
     // Send the response
     res.status(200).json(oneProject);
