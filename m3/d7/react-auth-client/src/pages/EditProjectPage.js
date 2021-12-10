@@ -1,6 +1,7 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import projectsService from "../services/projects.service";
 
 const API_URL = "http://localhost:5005";
 
@@ -13,9 +14,16 @@ function EditProjectPage(props) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${API_URL}/api/projects/${projectId}`
-        );
+
+      // const token = localStorage.getItem('authToken');        
+      // const response = await axios.get(
+      //   `${API_URL}/api/projects/${projectId}`,
+      //    { headers: {Authorization: "Bearer " + token} }
+      // );
+        
+      // or
+      const response = await projectsService.getProject(projectId);
+        
         const oneProject = response.data;
         setTitle(oneProject.title);
         setDescription(oneProject.description);
@@ -31,7 +39,19 @@ function EditProjectPage(props) {
     try {
       e.preventDefault();
       const requestBody = { title, description };
-      await axios.put(`${API_URL}/api/projects/${projectId}`, requestBody);
+
+      // const token = localStorage.getItem('authToken');      
+      // await axios.put(
+      //   `${API_URL}/api/projects/${projectId}`,
+      //   requestBody,
+      //   { headers: {Authorization: "Bearer " + token} }
+      // );
+      
+      // or
+      const response = await projectsService.updateProject(projectId, requestBody);
+
+
+
       navigate(`/projects/${projectId}`);
     } catch (error) {
       console.log(error);
@@ -40,7 +60,16 @@ function EditProjectPage(props) {
 
   const deleteProject = async () => {
     try {
-      axios.delete(`${API_URL}/api/projects/${projectId}`);
+
+      // const token = localStorage.getItem('authToken');      
+      // axios.delete(
+      //   `${API_URL}/api/projects/${projectId}`,
+      //   { headers: {Authorization: `Bearer ${}`} }
+      // );
+
+      // or
+      const response = await projectsService.deleteProject(projectId);      
+      
       navigate("/projects");
     } catch (error) {
       console.log(error);

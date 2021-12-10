@@ -2,13 +2,13 @@ import axios from "axios";
 import React, { createContext, useState, useEffect } from "react";
 import authService from "../services/auth.service";
 
-const API_URL = "http://localhost:5005";
 const AuthContext = createContext();
 
 function AuthProviderWrapper({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
+
+  const [isLoading, setIsLoading] = useState(true);
 
   const verifyStoredToken = async () => {
     try {
@@ -16,13 +16,13 @@ function AuthProviderWrapper({ children }) {
       const storedToken = localStorage.getItem("authToken");
 
       if (storedToken) {
-        // const response = await axios.get(
-        //   API_URL + "/auth/verify",
-        //   { headers: { Authorization: "Bearer " + storedToken } }
-        // );
+        const response = await axios.get(
+          "http://localhost:5005/auth/verify",
+          { headers: { Authorization: `Bearer ${storedToken}` } }
+        );
 
-        // or
-        const response = await authService.verify();
+        // or with a service
+        // const response = await authService.verify();
 
         // If the token is valid, update the state variables
         const user = response.data; // coming from payload
@@ -57,7 +57,6 @@ function AuthProviderWrapper({ children }) {
     verifyStoredToken();
   }, []);
 
-  /* Here we'll create function for updating the state variables */
 
   return (
     <AuthContext.Provider

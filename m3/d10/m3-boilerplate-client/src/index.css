@@ -15,6 +15,7 @@ select {
   min-width: 50px;
   margin: 5px;
   font-size: 18px;
+  height: 40px;
 }
 
 label {
@@ -108,4 +109,21 @@ nav li {
 
 .TaskCard {
   background-color: #dfeef9;
+}
+.Navbar {
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.profile-img-wrapper {
+  width: 50px;
+}
+
+.profile-img {
+  width: 35px;
+  border-radius: 35px;
+  border: 2px solid black;
+  background-color: rgba(255, 255, 255, 0.3);
 }

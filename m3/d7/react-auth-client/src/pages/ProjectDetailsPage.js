@@ -1,19 +1,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
 import AddTask from "../components/AddTask";
 import TaskCard from "../components/TaskCard";
+import projectsService from "../services/projects.service";
 
 const API_URL = "http://localhost:5005";
 
-function ProjectDetailsPage(props) {
+function ProjectDetailsPage() {
   const [project, setProject] = useState(null);
   const { projectId } = useParams();
 
   const getProject = async () => {
     try {
-      const response = await axios.get(`${API_URL}/api/projects/${projectId}`);
+      // const token = localStorage.getItem('authToken');      
+      // const response = await axios.get(
+      //   `${API_URL}/api/projects/${projectId}`,
+      //    { headers: {Authorization: "Bearer " + token} }
+      // );
+      // or
+      const response = await projectsService.getProject(projectId);
+
       const oneProject = response.data;
       setProject(oneProject);
     } catch (error) {

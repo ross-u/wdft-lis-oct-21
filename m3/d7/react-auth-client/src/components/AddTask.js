@@ -1,5 +1,6 @@
-import { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
+import tasksService from './../services/tasks.service';
 
 const API_URL = "http://localhost:5005";
 
@@ -13,7 +14,14 @@ function AddTask({ refreshProject, projectId }) {
       // Create an object representing the body of the POST request
       const requestBody = { title, description, projectId };
 
-      await axios.post(`${API_URL}/api/tasks`, requestBody);
+      const token = localStorage.getItem('authToken');      
+      await axios.post(
+        `${API_URL}/api/tasks`,
+        requestBody,
+        { headers: {Authorization: "Bearer " + token} }
+      );
+      // or
+      // await tasksService.createTask(requestBody);
 
       // Reset the state to clear the inputs
       setTitle("");

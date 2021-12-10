@@ -3,10 +3,9 @@
 import axios from "axios";
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
-import authService from "../services/auth.service";
+import { AuthContext } from "../../context/auth.context";
 
-const API_URL = "http://localhost:5005";
+import authService from "../../services/auth.service";
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");
@@ -26,17 +25,15 @@ function LoginPage(props) {
       e.preventDefault();
       const requestBody = { email, password };
 
-      // const authToken = localStorage.getItem('authToken');     
-      // const response = await axios.post(
-      //   `${API_URL}/auth/login`,
-      //   requestBody,
-      //   { headers: { Authorization: "Bearer " + authToken } }
-      // );
+      const authToken = localStorage.getItem("authToken");
+      const response = await axios.post(
+        "http://localhost:5005/auth/login",
+        requestBody,
+        { headers: { Authorization: `Bearer ${authToken}` } }
+      );
 
-      // or 
-      const response = await authService.login(requestBody);
-
-      console.log("JWT token", response.data.authToken);
+      // or with a service
+      // const response = await authService.login(requestBody);
 
       // Save the token and set the user as logged in ...
       const token = response.data.authToken;
@@ -44,8 +41,9 @@ function LoginPage(props) {
 
       navigate("/");
     } catch (error) {
+      console.log(error);
       // If the request resolves with an error, set the error message in the state
-      setErrorMessage("Something went wrong");
+      setErrorMessage(error.response.data.message);
     }
   };
 
@@ -58,12 +56,7 @@ function LoginPage(props) {
         <input type="text" name="email" value={email} onChange={handleEmail} />
 
         <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+        <input type="password" name="password" value={password} onChange={handlePassword} />
 
         <button type="submit">Login</button>
       </form>

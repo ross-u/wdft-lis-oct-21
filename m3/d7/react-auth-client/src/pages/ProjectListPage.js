@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
-
+import { useState, useEffect } from "react";
 import ProjectCard from "./../components/ProjectCard";
 import AddProject from "../components/AddProject";
+import projectsService from "../services/projects.service";
 
 const API_URL = "http://localhost:5005";
 
@@ -12,12 +12,15 @@ function ProjectListPage() {
   const getAllProjects = async () => {
     try {
       // We must include the token in the request
-      const token = localStorage.getItem("authToken");
+      // const token = localStorage.getItem("authToken");
+      // const response = await axios.get(
+      //   `${API_URL}/api/projects`,
+      //    { headers: {Authorization: "Bearer " + token} }
+      // );
 
-      const response = await axios.get(
-        `${API_URL}/api/projects`,
-         { headers: {Authorization: "Bearer " + token} }
-      );
+      // or
+      const response = await projectsService.getAllProjects();
+
       setProjects(response.data);
     } catch (error) {
       console.log(error);
